@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { @apply scroll-smooth antialiased; }
+  body { @apply bg-surface font-sans text-ink; }
+  ::selection { @apply bg-brand/30 text-white; }
+  ::placeholder { @apply text-gray-400; }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-sky-400 via-blue-500 to-indigo-400 bg-clip-text text-transparent;
+  }
+  .blob { @apply absolute rounded-full blur-3xl pointer-events-none; }
+  .grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(59,130,246,0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(59,130,246,0.06) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .card-float { @apply transition duration-300 hover:-translate-y-1; }
+  /* entrance animation — subtle */
+  .fade-up { animation: fadeUp .5s ease both; }
+  .fade-up-2 { animation: fadeUp .5s ease .12s both; }
+  .fade-up-3 { animation: fadeUp .5s ease .24s both; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+@layer base {
+  html { @apply scroll-smooth antialiased; }
+  body { @apply bg-surface font-sans text-ink; }
+  h1, h2, h3 { @apply text-white; }
+
+  /* 🌙 force ALL raw form controls to dark theme automatically */
+  input, textarea, select {
+    @apply bg-card2 text-white border-line placeholder:text-gray-500;
+  }
+  select option {
+    @apply bg-card2 text-white;
+  }
+  /* 🏷️ brighter form labels everywhere */
+  label {
+    @apply text-gray-200;
+  }
+
+  ::selection { @apply bg-brand/30 text-white; }
+  ::placeholder { @apply text-gray-500; }
+}
